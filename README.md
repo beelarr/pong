@@ -1,4 +1,4 @@
-## Pong in React
+## [Pong in React](https://beelarr.github.io/pong/)
 Run 
 ```
 yarn start
@@ -18,3 +18,6 @@ yarn eject
 ```
 Removes this tool and copies build dependencies, configuration files
     and scripts into the app directory. If you do this, you can’t go back!
+
+
+### [Play It!!](https://beelarr.github.io/pong/)
