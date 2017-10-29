@@ -89,7 +89,7 @@ var render = function() {
 
 // AMIMATION
 
-Ball.prototype.update = function() {
+Ball.prototype.update = function(paddle1, paddle2) {
     this.x += this.x_speed;
     this.y += this.y_speed;
     let top_x = this.x - 5;
@@ -101,18 +101,18 @@ Ball.prototype.update = function() {
         //    hitting left wall
         this.x = 5;
         this.x_speed = -this.x_speed
-    } else if (this.x + 5 > 400) {
+    } else if (this.x + 5 > width) {
         //    hitting the right wall
-        this.x = 395;
+        this.x = (width - 5);
         this.x_speed = -this.x_speed
     }
 
-    if (this.y < 0 || this.y > 600) {
+    if (this.y < 0 || this.y > height) {
         //    score
         this.x_speed = 0;
         this.y_speed = 3;
-        this.x = 200;
-        this.y = 300;
+        this.x = width;
+        this.y = height;
     }
 
     if (top_y > 300) {
@@ -121,7 +121,7 @@ Ball.prototype.update = function() {
         this.y_speed = -3
         this.x_speed += (paddle1.x_speed / 2)
         this.y += this.y_speed;
-    }
+        }
 } else {
         if (top_y < (paddle2.y + paddle2.height) && bottom_y > paddle2.y && top_x < (paddle2.x + paddle2.width) && bottom_x > paddle2.x) {
             //hit computer paddle
@@ -170,6 +170,9 @@ Paddle.prototype.move = function (x, y) {
         this.x_speed = 0
     }
 }
+
+//Computer AI
+
 
 // class Paddle {
 //     constructor(x, y, width, height) {
