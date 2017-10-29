@@ -26,7 +26,9 @@ let step = () => {
 
 var update = () => {
     player.update();
+    computer.update(ball)
     ball.update(player.paddle, computer.paddle);
+
 
 };
 
@@ -176,6 +178,24 @@ Paddle.prototype.move = function (x, y) {
 }
 
 //Computer AI
+
+Computer.prototype.update = function (ball) {
+    let x_pos = ball.x
+    let diff = -((this.paddle.x +(this.paddle.width / 2)) - x_pos);
+    if(diff < 0 && diff < -4){
+    //    max speed left
+        diff = -5;
+    } else if(diff > 0 && diff > 4) {
+    //    max speed right
+        diff = 5;
+    }
+    this.paddle.move(diff, 0)
+    if(this.paddle.x < 0) {
+        this.paddle.x = 0;
+    } else if (this.paddle.x + this.paddle.width > width) {
+        this.paddle.x = width - this. paddle.width;
+    }
+};
 
 
 // class Paddle {
