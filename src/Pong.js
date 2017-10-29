@@ -148,8 +148,10 @@ Player.prototype.update = function () {
     for(let key in keysDown) {
         let value = Number(key);
         if(value == 37) {
+            // left arrow
             this.paddle.move(-4, 0);
-        } else if (value ==39) {
+        } else if (value == 39) {
+            //right arrorw
             this.paddle.move(4, 0);
         } else {
             this.paddle.move(0, 0);
@@ -163,10 +165,12 @@ Paddle.prototype.move = function (x, y) {
     this.x_speed = x;
     this.y_speed = y;
     if(this.x < 0) {
+        //all the way left
         this.x = 0;
         this.x_speed = 0;
-    } else if (this.x + this.width > 400) {
-        this.x = 400 - this.width;
+    } else if (this.x + this.width > width) {
+        //all the way right
+        this.x = width - this.width;
         this.x_speed = 0
     }
 }
